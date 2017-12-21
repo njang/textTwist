@@ -9,11 +9,11 @@ Text twist is a word game, where the player guesses the right word by correcting
 
 ## User stories for Minimum Viable Product (MVP)
 - As a player, user can start a game where a random word is presented with letter order mixed up.
-- As a player, user can mix up the presented order of letters to further examine other possible words.
 - As a player, user can make guesses by using the individual letters.
 - As a player, user can see the list of correctly guessed words.
 
 ## User stories for stretch goals
+ - User can mix up the presented order of letters to further examine other possible words.
  - Each word is assigned different score, based on their string length. Player collects these points.
  - The letters are shown in [split-flap display](https://en.wikipedia.org/wiki/Split-flap_display).
  - The game is timed, where if the player finishes the game, the more points they earn.
