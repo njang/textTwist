@@ -74,6 +74,6 @@ The words are stored in lowercase. Player's guess will be converted to lowercase
 
 ## Bonus features
 
-* Every word that is revealed has a url tag to display the definition of that word.
+* Every word that is revealed comes with a popover display the definition of that word.
 * Hint: show some letters in the correct position and highlighted?
-* Make the game playable on a touch screen interface without a physical keyboard.
+* Make the game playable on a touch screen interface without a physical keyboard. (Touch a letter to move it to the guess box? Touching a letter in guessbox removes it?)

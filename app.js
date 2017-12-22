@@ -2,8 +2,8 @@
 // Filter out words that are too short or too long.
 let wordList = [];
 $(document).ready(function() {
-	let minLength = 2;	// minimum string length of word
-	let maxLength = 3;	// maximum string length of word
+	let minLength = 3;	// minimum string length of word
+	let maxLength = 4;	// maximum string length of word
 	wordList = dictionary.words.filter(word => (word.length <= maxLength && word.length >= minLength));
   // $.getJSON("words.json", (result) => {
   //   wordList = result.words.filter(word => (word.length <= maxLength && word.length >= minLength));
@@ -54,20 +54,27 @@ const isWord = (word) => {
 	return (permuWords.indexOf(word) >= 0);
 }
 
+// Initializes the game on load.
 const init = () => {
 	pickRandomWord();
 	buildPermutations();	
-	$("#hint").text(randomWord);
-	$('#words').text(permuWords);
+	scrambleWord();
+	// $('#words').text(permuWords);
 }
 
-const scrambleWord = (word) => {
-	let scrambled = [];
-	for (let i = 0; i < word.length; i++){
-		scrambled.push();
-	}
+// Scramble the hint word.
+
+let scrambleWord = () => {
+	let scrambled = permutations.filter(word => (word.length == randomWord.length) && (word != randomWord));
+	let index = Math.round(Math.random() * (scrambled.length - 1))
+	$("#hint").text(scrambled[index]);
 }
 
+// Function to collect correctly guessed words
+let correctGuesses = [];
+
+
+// Main app for the game
 const main = () => {
 	// Twist button will scramble the word.
 	let temp = permutations.filter(word => word.length == randomWord.length);	
@@ -85,13 +92,26 @@ const main = () => {
 		pickRandomWord();
 		buildPermutations();	
 		$("#hint").text(randomWord);
-		$('#words').text(permuWords);
+		// correctGuesses = [];
+		// $('#guess').val('');
 	});
 
 	// On submit of a guess word, check if it is in the list of permuted word.
 	$('#submit').click((event) => {
 		event.preventDefault();
-		alert(`You entered ${$("#guess").val()} and ` + (isWord($("#guess").val()) ? "It's a word!" : "Try again"));
+
+		let guessWord = $("#guess").val();
+		if (permuWords.indexOf(guessWord) >= 0 && correctGuesses.indexOf(guessWord) < 0) {
+			correctGuesses.push(guessWord);
+			$('#words').text(correctGuesses.join(', '));
+			if (correctGuesses.length == permuWords.length) {
+				alert('Congratulations, you win the internet!');
+			}
+		}
+
+
+		// alert(`You entered ${$("#guess").val()} and ` + (isWord($("#guess").val()) ? "It's a word!" : "Try again"));
+		// Clear out the text entry box
 		$("#guess").val('');
 	});
 }
