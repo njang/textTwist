@@ -5,9 +5,10 @@ let wordList = [];
 $(document).ready(function() {
 	let minLength = 4;	// minimum string length of word
 	let maxLength = 6;	// maximum string length of word
-  $.getJSON("words.json", (result) => {
-    wordList = result.words.filter(word => (word.length <= maxLength && word.length >= minLength));
-  });
+	wordList = dictionary.words.filter(word => (word.length <= maxLength && word.length >= minLength));
+  // $.getJSON("words.json", (result) => {
+  //   wordList = result.words.filter(word => (word.length <= maxLength && word.length >= minLength));
+  // });
 });
 
 // Pick a random word from the list.
@@ -29,7 +30,7 @@ const buildPermutations = () => {
 	});
 }
 
-const getAllPermutations = (string, toggle) => {
+const getAllPermutations = (string) => {
   let results = [];
 
   if (string.length === 1) {
@@ -59,14 +60,12 @@ const main = () => {
 	});
 
 	// Twist button will scramble the word.
-	alert(permutations.length);
-	let temp = permutations.filter(word => word.length == randomWord.length);		
+	// let temp = permutations.filter(word => word.length == randomWord.length);		
 	$('#twist').click(function(){
 		let randomIndex = Math.round(Math.random() * (permutations.length - 1));
-		let randomNonWord = temp[randomIndex];
-		alert(`howdy, ${randomIndex}, ${randomNonWord}`);
-		
-		$('#hint').text(randomNonWord);
+		let randomWord = permutations[randomIndex];
+	// 	$('#hint').text(randomNonWord);
+		$('#hint').text(randomWord);		
 	});
 }
 
