@@ -20,33 +20,33 @@ h1 {
 	font-family: 'Monoton', cursive;
 	color: white;
 	font-size: 96px;
-	margin: 1em auto;
+	margin: 0.5em auto;
 }
 
-#guesses {
-	position: absolute;
-	top: 40%;
+#guess {
+	font-size: 36px;
 	height: 10%;
-	left: 30%;
-	right: 30%;
-	width: 40%;
-	border-radius: 20px;
+	margin: 0 auto;
+	border: solid;
+	border-radius: 15px;
 	padding: 20px;
 }
 
 #words {
+	font-size: 36px;
 	position: absolute;
-	right: 0;
-	width: 100%;
-	bottom: 20%;
-	height: 20%;
-	border: solid;
+	left: 10%;
+	right: 10%;
+	width: 80%;
+	bottom: 10%;
+	height: 35%;
+	border-radius: 15px;
 }
 
-footer {
-	font-size: 48px;
+#hint {
+	font-size: 60px;
 	position: absolute;
-	bottom: 10%;
+	top: 40%;
 	left: 10%;
 	right: 10%;
 	width: 80%;

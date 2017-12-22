@@ -16,9 +16,29 @@
 	<content>
 		<h1>Text Twist</h1>
 		<input id="guess" type="text" placeholder="Hello world" autofocus required></input>
-		<div id="words"></div>
-		<footer id="hint"></footer>
-		<button id="reset" type="button" class="btn btn-primary">Reset</button>
+		<textarea id="words" class="text-justify d-inline" disabled></textarea>
+		<div id="hint"></div>
+		<button type="button" class="btn btn-info btn-lg" id="twist">Twist</button>
+		<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Reset</button>
 	</content>
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog modal-sm">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-body">
+	        <h4>Are you sure to reset?</h4>
+	      </div>
+	      <div class="modal-footer">
+	        <button id="reset" type="button" class="btn btn-danger" data-dismiss="modal">Reset</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal" default>Cancel</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
+
 </body>
 </html>
