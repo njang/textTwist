@@ -32,6 +32,12 @@ Useful if you're creating a word game or just want some words to work with: [wor
 
 ### Storing the list of words in a separate file and importing it
 
+[Update 22DEC2017] There is a simpler method to do this. Link the `json` file to `html`, and give the JSON object a name.
+
+```
+  <script src="words.json"></script>
+```
+
 Chrome browser will give the following error, when a separate JSON file is requested from the JS file.
 
 > Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https.
@@ -51,3 +57,11 @@ Random number generator will be used to pick an index of the word in the list.
 ### Building a list of all 'sub'-words
 
 Once a random word has been picked, it has to be split down to componenet letters. These letters will be reassembled to build a list of permutations. This permutation will be validated against the original words list for whether such permutation is a recognized word.  
+
+### Retrieving the guess word as entered by the player
+
+The game should be playable almost entirely by keyboard. Key press event of `Enter` should submit the string value, check against the list of permutated words and the entry box be cleared.
+
+### Initializing the game upon load
+
+### Number of necessary buttons to play the game, how to arrange and place them
