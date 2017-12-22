@@ -62,6 +62,18 @@ Once a random word has been picked, it has to be split down to componenet letter
 
 The game should be playable almost entirely by keyboard. Key press event of `Enter` should submit the string value, check against the list of permutated words and the entry box be cleared.
 
+### Case-sensitivity
+
+The words are stored in lowercase. Player's guess will be converted to lowercase for comparison. All displayed letters will be uppercase for aesthetic purpose.
+
 ### Initializing the game upon load
 
 ### Number of necessary buttons to play the game, how to arrange and place them
+
+
+
+## Bonus features
+
+* Every word that is revealed has a url tag to display the definition of that word.
+* Hint: show some letters in the correct position and highlighted?
+* Make the game playable on a touch screen interface without a physical keyboard.

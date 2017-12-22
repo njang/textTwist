@@ -11,32 +11,55 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body onload="init()">
 	<content>
 		<h1>Text Twist</h1>
-		<input id="guess" type="text" placeholder="Hello world" autofocus required></input>
+		<form>
+			<input id="guess" type="text" placeholder="Enter guess here" autofocus required></input>
+			<br>
+			<button type="submit" class="btn btn-primary btn-lg" id="submit">Submit</button>
+			<button type="button" class="btn btn-success btn-lg" id="twist">Twist</button>
+			<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modalReset">Reset</button>
+			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalHint">Hint</button>
+		</form>
 		<textarea id="words" class="text-justify d-inline" disabled></textarea>
 		<div id="hint"></div>
-		<button type="button" class="btn btn-info btn-lg" id="twist">Twist</button>
-		<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Reset</button>
 	</content>
-	<!-- Modal -->
-	<div id="myModal" class="modal fade" role="dialog">
+	<!-- Modal for reset -->
+	<div id="modalReset" class="modal fade" role="dialog">
 	  <div class="modal-dialog modal-sm">
-
 	    <!-- Modal content-->
 	    <div class="modal-content">
 	      <div class="modal-body">
 	        <h4>Are you sure to reset?</h4>
 	      </div>
 	      <div class="modal-footer">
-	        <button id="reset" type="button" class="btn btn-danger" data-dismiss="modal">Reset</button>
-	        <button type="button" class="btn btn-default" data-dismiss="modal" default>Cancel</button>
+	        <button id="reset" type="button" class="btn btn-danger" data-dismiss="modal" default>Reset</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 	      </div>
 	    </div>
 
 	  </div>
 	</div>
+	<!-- Modal for hint -->
+	<div id="modalHint" class="modal fade" role="dialog">
+	  <div class="modal-dialog modal-sm">
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h2>Hint</h2>
+	      </div>
+	      <div class="modal-body">
+	        <h4>Here's a hint</h4>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" default>Close</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
 	<script src="words.json"></script>
 	<script type="text/javascript" src="app.js"></script>
 </body>

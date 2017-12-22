@@ -1,10 +1,9 @@
 // Load the list of words from a separate words.json file.
 // Filter out words that are too short or too long.
-
 let wordList = [];
 $(document).ready(function() {
-	let minLength = 4;	// minimum string length of word
-	let maxLength = 6;	// maximum string length of word
+	let minLength = 2;	// minimum string length of word
+	let maxLength = 3;	// maximum string length of word
 	wordList = dictionary.words.filter(word => (word.length <= maxLength && word.length >= minLength));
   // $.getJSON("words.json", (result) => {
   //   wordList = result.words.filter(word => (word.length <= maxLength && word.length >= minLength));
@@ -18,7 +17,8 @@ const pickRandomWord = () => {
 	randomWord = wordList[index];
 }
 
-// Build a list of permutations that are words included in the original list.
+// Build a list of permutations using the letters of the random word.
+// Filter it to a list of real words.
 let permutations = [];
 let permuWords = [];
 const buildPermutations = () => {
@@ -29,7 +29,6 @@ const buildPermutations = () => {
 		return a.length - b.length;
 	});
 }
-
 const getAllPermutations = (string) => {
   let results = [];
 
@@ -50,22 +49,50 @@ const getAllPermutations = (string) => {
   return results;
 }
 
+// Function to check whether guess word is in the list
+const isWord = (word) => {
+	return (permuWords.indexOf(word) >= 0);
+}
+
+const init = () => {
+	pickRandomWord();
+	buildPermutations();	
+	$("#hint").text(randomWord);
+	$('#words').text(permuWords);
+}
+
+const scrambleWord = (word) => {
+	let scrambled = [];
+	for (let i = 0; i < word.length; i++){
+		scrambled.push();
+	}
+}
+
 const main = () => {
+	// Twist button will scramble the word.
+	let temp = permutations.filter(word => word.length == randomWord.length);	
+	$("#hint").text(temp[0]);
+	$('#twist').click(() => {
+		let randomIndex = Math.round(Math.random() * (permutations.length - 1));
+		// let randomWord = permutations[randomIndex];
+		let randomWord = temp[randomIndex];
+	// 	$('#hint').text(randomNonWord);
+		$('#hint').text(randomWord);		
+	});
+
 	// Reset button will reset the word.
-	$('#reset').click(function(){
+	$('#reset').click(() => {
 		pickRandomWord();
 		buildPermutations();	
 		$("#hint").text(randomWord);
 		$('#words').text(permuWords);
 	});
 
-	// Twist button will scramble the word.
-	// let temp = permutations.filter(word => word.length == randomWord.length);		
-	$('#twist').click(function(){
-		let randomIndex = Math.round(Math.random() * (permutations.length - 1));
-		let randomWord = permutations[randomIndex];
-	// 	$('#hint').text(randomNonWord);
-		$('#hint').text(randomWord);		
+	// On submit of a guess word, check if it is in the list of permuted word.
+	$('#submit').click((event) => {
+		event.preventDefault();
+		alert(`You entered ${$("#guess").val()} and ` + (isWord($("#guess").val()) ? "It's a word!" : "Try again"));
+		$("#guess").val('');
 	});
 }
 
