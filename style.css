@@ -34,6 +34,15 @@ h1 {
 	padding: 20px;
 }
 
+#words {
+	position: absolute;
+	right: 0;
+	width: 100%;
+	bottom: 20%;
+	height: 20%;
+	border: solid;
+}
+
 footer {
 	font-size: 48px;
 	position: absolute;
