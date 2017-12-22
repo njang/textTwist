@@ -23,7 +23,7 @@ h1 {
 	margin: 1em auto;
 }
 
-textarea {
+#guesses {
 	position: absolute;
 	top: 40%;
 	height: 10%;
