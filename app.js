@@ -27,7 +27,7 @@ let permutations = [];
 let permuWords = [];
 const buildPermutations = () => {
 	permutations = Array.from(new Set(getAllPermutations(randomWord)));
-	permuWords = permutations.filter(word => wordList.indexOf(word) > 0);
+	permuWords = permutations.filter(word => wordList.indexOf(word) >= 0);
 	permuWords.sort((a, b) => {
 		return a.length - b.length;
 	});
@@ -87,14 +87,19 @@ $('#reset').click(() => {
 // On submit of a guess word, check if it is in the list of permuted word
 $('#submit').click((event) => {
 	event.preventDefault();
-
 	let guessWord = $("#guess").val();
 	if (permuWords.indexOf(guessWord) >= 0 && correctGuesses.indexOf(guessWord) < 0) {
 		correctGuesses.push(guessWord);
 		correctGuesses.sort(function(a, b){return a.length - b.length});
 		$('#words').text(correctGuesses.join(', '));
+		
+		// if the player guesses the correct word, display congratulation message.
+		if (guessWord == randomWord) {
+			alert('Congratulations, you found the word!')
+		}			
+		// if the player finds all the words, display another congratulation message.
 		if (correctGuesses.length == permuWords.length) {
-			alert('Congratulations, you win the internet!');
+			alert('Congratulations, you found all the words!');
 		}
 	}
 	// Clear out the text entry box
