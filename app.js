@@ -105,3 +105,13 @@ $('#submit').click((event) => {
 	// Clear out the text entry box
 	$("#guess").val('');
 });
+
+document.addEventListener('keyup', (event) => {
+	if (event.code === "Space") {
+		scrambleWord();
+		// return false;
+	}
+	// change: function() {
+ //    this.value = this.value.replace(/\s/g, "");
+ //  }
+})
