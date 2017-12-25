@@ -68,14 +68,30 @@ The words are stored in lowercase. Player's guess will be converted to lowercase
 
 ### Initializing the game upon load
 
+The code has been refactored to properly follow the game flow. Summary diagram will be supplied here at a later date.
+
 ### Number of necessary buttons to play the game, how to arrange and place them
 
+- *Enter* for submitting the game: this may be unneccessary enter key servese this purpose if played using keyboard .
+- *Twist* for scrambling the words: this may also be tied to a hotkey, such as space > If so, the space key must not register in the text entry form.
+- *Reset* for starting another game
+- *Hint* or How-to-Play
 
+### Improved layout of the board
+
+- Each area must be properly assigned so that adjusting the screen size, the rendering does not break.
+- Responsive design for a better rendering on a screen of mobile device
+
+### Limiting the scope of the game
+
+- Keep the number of words low by using a different dictionary at the initialization
+- Keep the number of permutated words low. This is possible by checking the length of permutated words and keeping it below a set threshold. If above, repeat for a lower number of permutated words.
+- Allow the user to pick the maximum number of characters in the word.
 
 ## Bonus features
 
 * Playable entirely by keyboard: use keyboard to twist the words and enter for submit.
 * Every word that is revealed comes with a popover display the definition of that word.
-* Animation to move the letters from hint box the guess box as the player types
+* Animation to move the letters from hint box the guess box as the player types.
 * Hint: show some letters in the correct position and highlighted?
 * Make the game playable on a touch screen interface without a physical keyboard. (Touch a letter to move it to the guess box? Touching a letter in guessbox removes it?)
