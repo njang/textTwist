@@ -76,13 +76,22 @@ $('#twist').click(() => {
 
 // Reset button will reset the word
 $('#reset').click(() => {
+	resetGame();
+});
+
+const resetGame = () => {
+	// Set a threshold on the number of premutated words.
+	let maxWords = 30;
 	pickRandomWord();
 	buildPermutations();	
+	if (permuWords.length > maxWords) {
+		resetGame();
+	}
 	$("#hint").text(randomWord);
 	correctGuesses = [];
 	$('#words').text('');
 	scrambleWord();
-});
+}
 
 // On submit of a guess word, check if it is in the list of permuted word
 $('#submit').click((event) => {
@@ -95,7 +104,7 @@ $('#submit').click((event) => {
 		
 		// if the player guesses the correct word, display congratulation message.
 		if (guessWord == randomWord) {
-			alert('Congratulations, you found the word!')
+			alert('Congratulations, you found the word!');
 		}			
 		// if the player finds all the words, display another congratulation message.
 		if (correctGuesses.length == permuWords.length) {
