@@ -5,15 +5,17 @@
 // Filter out words hat are too short or too long.
 let wordList = [];
 $(document).ready(function() {
-	let minLength = 2;	// minimum string length of word
+	let minLength = 3;	// minimum string length of word
 	let maxLength = 6;	// maximum string length of word
 	wordList = dictionary.words.filter(word => (word.length <= maxLength && word.length >= minLength));
   // $.getJSON("words.json", (result) => {
   //   wordList = result.words.filter(word => (word.length <= maxLength && word.length >= minLength));
   // });
-  pickRandomWord();
-  buildPermutations();
-	scrambleWord();
+
+  resetGame();
+ //  pickRandomWord();
+ //  buildPermutations();
+	// scrambleWord();
 });
 
 // Pick a random word from the list.
@@ -122,12 +124,11 @@ $('#submit').click((event) => {
 	$("#guess").val('');
 });
 
+// Assign space key for scrambling the letters.
 document.addEventListener('keyup', (event) => {
 	if (event.code === "Space") {
 		scrambleWord();
-		// return false;
+		$('#guess').val($('#guess').val().replace(/ /g,''));
+		// return false; // return false to prevent space from being added		
 	}
-	// change: function() {
- //    this.value = this.value.replace(/\s/g, "");
- //  }
 })
