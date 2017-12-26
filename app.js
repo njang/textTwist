@@ -103,14 +103,19 @@ $('#submit').click((event) => {
 		correctGuesses.push(guessWord);
 		correctGuesses.sort(function(a, b){return a.length - b.length});
 		$('#words').text(correctGuesses.join(', '));
+
 		
 		// if the player guesses the correct word, display congratulation message.
 		if (guessWord == randomWord) {
 			alert('Congratulations, you found the word!');
 		}			
 		// if the player finds all the words, display another congratulation message.
-		if (correctGuesses.length == permuWords.length) {
+		if (correctGuesses.length < permuWords.length) {
+			$('#guess').attr("placeholder", permuWords.length - correctGuesses.length + " words remaining");
+		} else {
 			alert('Congratulations, you found all the words!');
+			$('#guess').attr("placeholder", "Round complete");
+			$('#guess').attr("disabled", true);
 		}
 	}
 	// Clear out the text entry box
