@@ -1,4 +1,6 @@
 
+
+
 // Load the list of words from a separate words.json file.
 // Filter out words hat are too short or too long.
 let wordList = [];
@@ -84,7 +86,7 @@ const resetGame = () => {
 	let maxWords = 30;
 	pickRandomWord();
 	buildPermutations();	
-	if (permuWords.length > maxWords) {
+	if (permuWords.length > maxWords || permuWords.length == 1) {
 		resetGame();
 	}
 	$("#hint").text(randomWord);
