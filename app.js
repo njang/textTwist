@@ -66,7 +66,7 @@ const isWord = (word) => {
 let scrambleWord = () => {
 	let scrambled = permutations.filter(word => (word.length == randomWord.length) && (word != randomWord));
 	let index = Math.round(Math.random() * (scrambled.length - 1))
-	$("#hint").text(scrambled[index]);
+	$("#twisted").text(scrambled[index]);
 	// $('#words').text(permuWords);
 }
 
@@ -91,7 +91,7 @@ const resetGame = () => {
 	if (permuWords.length > maxWords || permuWords.length == 1) {
 		resetGame();
 	}
-	$("#hint").text(randomWord);
+	$("#twisted").text(randomWord);
 	correctGuesses = [];
 	$('#words').text('');
 	scrambleWord();

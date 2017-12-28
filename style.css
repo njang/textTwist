@@ -36,6 +36,12 @@ h1 {
 	width: 80%;
 	text-transform: uppercase;
 	background: rgba(255, 255, 255, 0.8);
+	color: transparent;
+  	/*text-shadow: 0 0 0 #2196f3;*/
+  	text-shadow: 0 0 0 #000000;
+	&:focus {
+      outline: none;
+  	}
 }
 
 #words {
@@ -52,7 +58,7 @@ h1 {
 	text-align: center;
 }
 
-#hint {
+#twisted {
 	font-size: 60px;
 	position: absolute;
 	top: 50%;
