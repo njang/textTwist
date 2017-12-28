@@ -1,13 +1,13 @@
 
-
-
 // Load the list of words from a separate words.json file.
 // Filter out words hat are too short or too long.
 let wordList = [];
+let commonList = [];
 $(document).ready(function() {
 	let minLength = 3;	// minimum string length of word
 	let maxLength = 6;	// maximum string length of word
 	wordList = dictionary.words.filter(word => (word.length <= maxLength && word.length >= minLength));
+	commonList = common.words.filter(word => (word.length <= maxLength && word.length >= minLength));
   // $.getJSON("words.json", (result) => {
   //   wordList = result.words.filter(word => (word.length <= maxLength && word.length >= minLength));
   // });
@@ -21,8 +21,8 @@ $(document).ready(function() {
 // Pick a random word from the list.
 let randomWord;
 const pickRandomWord = () => {
-	let index = Math.round(Math.random() * (wordList.length - 1));
-	randomWord = wordList[index];
+	let index = Math.round(Math.random() * (commonList.length - 1));
+	randomWord = commonList[index];
 }
 
 // Build a list of permutations using the letters of the random word.
@@ -95,6 +95,8 @@ const resetGame = () => {
 	correctGuesses = [];
 	$('#words').text('');
 	scrambleWord();
+	$('#guess').attr("placeholder", "Enter text here");
+	$('#guess').attr("disabled", false);
 }
 
 // On submit of a guess word, check if it is in the list of permuted word

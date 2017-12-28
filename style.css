@@ -27,9 +27,15 @@ h1 {
 }
 
 #guess {
-	font-size: 36px;
+	position: absolute;
+	top: 25%;
+	bottom: 65%;
 	height: 10%;
-	margin: 0 auto 1em;
+	left: 10%;
+	right: 10%;
+	width: 80%;
+	font-size: 36px;
+	margin: 0 auto;
 	border: solid;
 	border-radius: 15px;
 	padding: 20px;
