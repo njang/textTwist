@@ -105,7 +105,7 @@ $('#submit').click((event) => {
 	let guessWord = $("#guess").val();
 	if (permuWords.indexOf(guessWord) >= 0 && correctGuesses.indexOf(guessWord) < 0) {
 		correctGuesses.push(guessWord);
-		correctGuesses.sort(function(a, b){return a.length - b.length});
+		correctGuesses.sort(function(a, b){return a.length - b.length || a.localeCompare(b)});
 		$('#words').text(correctGuesses.join(', '));
 
 		

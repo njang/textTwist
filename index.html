@@ -16,11 +16,12 @@
 		<h1>Text Twist</h1>
 		<form autocomplete="off">
 			<input id="guess" type="text" placeholder="Enter text here" autofocus required></input>
-			<br><br>
-			<button type="submit" class="btn btn-primary btn-lg" id="submit">Submit</button>
-			<button type="button" class="btn btn-success btn-lg" id="twist">Twist</button>
-			<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modalReset">Reset</button>
-			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalHint">Hint</button>
+			<div id="buttonRow">
+				<button type="submit" class="btn btn-primary btn-lg" id="submit" hidden>Submit</button>
+				<button type="button" class="btn btn-success btn-lg" id="twist">Twist</button>
+				<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modalReset">Reset</button>
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalInfo">How to Play</button>	
+			</div>			
 		</form>
 		<div id="twisted"></div>
 		<textarea id="words" class="text-justify d-inline" disabled></textarea>
@@ -42,7 +43,7 @@
 	  </div>
 	</div>
 	<!-- Modal for How to Play -->
-	<div id="modalHint" class="modal fade" role="dialog">
+	<div id="modalInfo" class="modal fade" role="dialog">
 	  <div class="modal-dialog modal-md">
 	    <!-- Modal content-->
 	    <div class="modal-content">
