@@ -1,57 +1,56 @@
 
 // Load the list of words from a separate words.json file.
 // Filter out words hat are too short or too long.
-let wordList = [];
+let collection = [];
 // let commonList = [];
 $(document).ready(function() {
 	let minLength = 3;	// minimum string length of word
 	let maxLength = 6;	// maximum string length of word
-	wordList = dictionary.words.filter(word => (word.length <= maxLength && word.length >= minLength));
+	collection = dictionary.words.filter(word => (word.length <= maxLength && word.length >= minLength));
 	// commonList = common.words.filter(word => (word.length <= maxLength && word.length >= minLength));
   // $.getJSON("words.json", (result) => {
-  //   wordList = result.words.filter(word => (word.length <= maxLength && word.length >= minLength));
+  //   collection = result.words.filter(word => (word.length <= maxLength && word.length >= minLength));
   // });
-
   resetGame();
- //  pickRandomWord();
- //  buildPermutations();
-	// scrambleWord();
 });
 
 // Pick a random word from the list.
 let randomWord;
 const pickRandomWord = () => {
-	let index = Math.round(Math.random() * (wordList.length - 1));
-	randomWord = wordList[index];
-}
+	let index = Math.round(Math.random() * (collection.length - 1));
+	randomWord = collection[index];
+};
 
 // Build a list of permutations using the letters of the random word.
 // Filter it to a list of real words.
 let permutations = [];
-let permuWords = [];
+let wordList = [];
 const buildPermutations = () => {
 	permutations = Array.from(new Set(getAllPermutations(randomWord)));
-	permuWords = permutations.filter(word => wordList.indexOf(word) >= 0);
-	permuWords.sort((a, b) => {
+	wordList = permutations.filter(word => collection.indexOf(word) >= 0);
+	wordList.sort((a, b) => {
 		return a.length - b.length;
 	});
-}
+};
 
+// Function to return all permutations of a given string. 
+// Reference: https://repl.it/repls/TwinPrudentIbizanhound
 const getAllPermutations = (string) => {
   let results = [];
-
+  // If the string consists of one character, return it.
   if (string.length === 1) {
     results.push(string);
     return results;
   }
-
+  // recursive function to get all permutations.
   for (let i = 0; i < string.length; i++) {
     let firstChar = string[i];
     let charsLeft = string.substring(0, i) + string.substring(i + 1);
     let innerPermutations = getAllPermutations(charsLeft);
     for (let j = 0; j < innerPermutations.length; j++) {
-
       results.push(firstChar + innerPermutations[j], innerPermutations[j]);
+    	// The following line strictly uses permutations of the same length as the original word.
+      // results.push(firstChar + innerPermutations[j]);
     }
   }
   return results;
@@ -59,7 +58,7 @@ const getAllPermutations = (string) => {
 
 // Function to check whether guess word is in the list
 const isWord = (word) => {
-	return (permuWords.indexOf(word) >= 0);
+	return (wordList.indexOf(word) >= 0);
 }
 
 // Scramble the hint word.
@@ -67,11 +66,8 @@ let scrambleWord = () => {
 	let scrambled = permutations.filter(word => (word.length == randomWord.length) && (word != randomWord));
 	let index = Math.round(Math.random() * (scrambled.length - 1))
 	$("#twisted").text(scrambled[index]);
-	// $('#words').text(permuWords);
+	// $('#words').text(wordList);
 }
-
-// Function to collect correctly guessed words
-let correctGuesses = [];
 
 // Twist button will scramble the word
 $('#twist').click(() => {
@@ -83,46 +79,55 @@ $('#reset').click(() => {
 	resetGame();
 });
 
+// Function to reset/initialize the game.
 const resetGame = () => {
 	// Set a threshold on the number of premutated words.
-	let maxWords = 30;
+	let maxWords = 25;
 	pickRandomWord();
 	buildPermutations();	
-	if (permuWords.length > maxWords || permuWords.length == 1) {
+	// Word list shouldn't contain more than maximum allowed, as defined above, but must have at least 1 minimum.
+	if (wordList.length > maxWords || wordList.length == 1) {
 		resetGame();
 	}
-	$("#twisted").text(randomWord);
+	// Empty the guess list.
 	correctGuesses = [];
+	// Display the random word selected for this round.
+	$("#twisted").text(randomWord);
+	// Empty the guesses displayed from previous round.
 	$('#words').text('');
-	scrambleWord();
+	// Reset the placeholder text for the entry form.
 	$('#guess').attr("placeholder", "Enter text here");
+	// Enable the entry form, which was disabled at the end of the previous game.
 	$('#guess').attr("disabled", false);
+	// Scramble the hint word.
+	scrambleWord();
 }
 
-// On submit of a guess word, check if it is in the list of permuted word
+// Function to collect correctly guessed words.
+let correctGuesses = [];
+// On submit of a guess word, check if it is in the list of permutated words.
 $('#submit').click((event) => {
 	event.preventDefault();
 	let guessWord = $("#guess").val();
-	if (permuWords.indexOf(guessWord) >= 0 && correctGuesses.indexOf(guessWord) < 0) {
+	if (wordList.indexOf(guessWord) >= 0 && correctGuesses.indexOf(guessWord) < 0) {
 		correctGuesses.push(guessWord);
 		correctGuesses.sort(function(a, b){return a.length - b.length || a.localeCompare(b)});
 		$('#words').text(correctGuesses.join(', '));
-
 		
-		// if the player guesses the correct word, display congratulation message.
+		// If the player guesses the correct word, display congratulation message.
 		if (guessWord == randomWord) {
 			alert('Congratulations, you found the word!');
 		}			
 		// if the player finds all the words, display another congratulation message.
-		if (correctGuesses.length < permuWords.length) {
-			$('#guess').attr("placeholder", permuWords.length - correctGuesses.length + " words remaining");
+		if (correctGuesses.length < wordList.length) {
+			$('#guess').attr("placeholder", wordList.length - correctGuesses.length + " words remaining");
 		} else {
 			alert('Congratulations, you found all the words!');
 			$('#guess').attr("placeholder", "Round complete");
 			$('#guess').attr("disabled", true);
 		}
 	}
-	// Clear out the text entry box
+	// Clear the text entry box.
 	$("#guess").val('');
 });
 
