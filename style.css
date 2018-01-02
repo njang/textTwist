@@ -22,20 +22,17 @@ h1 {
 	text-transform: uppercase;
 	font-family: 'Monoton', cursive;
 	color: white;
-	font-size: 6vw;
+	font-size: 6vh;
 	margin: 0.5em auto;
 }
 
-#guess, #twisted {
-	height: 4vw;
-	font-size: 1.5vw;
-	padding: 0.6em;
-	text-transform: uppercase;
-} 
-
 #guess, #twisted, #words{
-	border-radius: 2vw;
-}
+	height: 5vh;
+	font-size: 2vh;
+	padding: 0.5em;
+	text-transform: uppercase;
+	border-radius: 2.5vh;
+} 
 
 #guess {
 	/*position: absolute;*/
@@ -44,13 +41,15 @@ h1 {
 	right: 10%;
 	width: 80%;
 	margin: 0 auto;
-	border: solid;
+	padding: 1em;
+	border: none;
+	/*border-color: transparent;*/
 	background: rgba(255, 255, 255, 0.8);
-	color: transparent;
+/*	color: transparent;
 	text-shadow: 0 0 0 #000000;
 	&:focus {
       outline: none;
-	}
+	}*/
 }
 
 #words {
@@ -59,10 +58,11 @@ h1 {
 	left: 10%;
 	right: 10%;
 	width: 80%;
-	bottom: 10%;
-	height: 35vh;
-	padding: 0.5em;
-	text-align: center;
+	top: 33vh;
+	bottom: 0;
+	height: 25vh;
+	padding: 1em;
+	/*text-align: center;*/
 	text-transform: uppercase;
 	background: rgba(255, 255, 255, 0.8);
 }
@@ -80,6 +80,12 @@ h1 {
 
 #buttonRow button {
 	margin: 0.75em 0.25em;
+}
+
+@include media-breakpoint-between(md){
+  .btn {
+      @include button-size($input-btn-padding-y-md, $input-btn-padding-x-md, $font-size-md, $line-height-md, $btn-border-radius-md);
+  }
 }
 
 /*To hide the red focus hightlight box around the input field*/

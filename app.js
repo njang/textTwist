@@ -75,7 +75,7 @@ $('#twist').click(() => {
 });
 
 // Reset button will reset the word
-$('#reset').click(() => {
+$('.reset').click(() => {
 	resetGame();
 });
 
@@ -116,13 +116,15 @@ $('#submit').click((event) => {
 		
 		// If the player guesses the correct word, display congratulation message.
 		if (guessWord == randomWord) {
-			alert('Congratulations, you found the word!');
+			$('#winMessage').text('Congratulations, you found the word!');
+			$('#modalWin').modal('toggle')
 		}			
 		// if the player finds all the words, display another congratulation message.
 		if (correctGuesses.length < wordList.length) {
 			$('#guess').attr("placeholder", wordList.length - correctGuesses.length + " words remaining");
 		} else {
-			alert('Congratulations, you found all the words!');
+			$('#winMessage').text('Congratulations, you found all the words!');
+			$('#modalWin').modal('toggle')
 			$('#guess').attr("placeholder", "Round complete");
 			$('#guess').attr("disabled", true);
 		}
