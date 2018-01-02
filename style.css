@@ -2,6 +2,7 @@ body {
 	text-align: center;
 	background: url('https://images.unsplash.com/photo-1461958508236-9a742665a0d5?auto=format&fit=crop&w=1950&q=80');
 	background-size: cover;
+	/*background-repeat: no-repeat;*/
 }
 
 content {
@@ -21,22 +22,24 @@ h1 {
 	text-transform: uppercase;
 	font-family: 'Monoton', cursive;
 	color: white;
-	/*font-size: 96px;*/
 	font-size: 6vw;
 	margin: 0.5em auto;
 }
 
 #guess, #twisted {
 	height: 4vw;
-	border-radius: 2vw;
 	font-size: 1.5vw;
-	padding: 1em;
+	padding: 0.6em;
 	text-transform: uppercase;
 } 
 
+#guess, #twisted, #words{
+	border-radius: 2vw;
+}
+
 #guess {
-	position: absolute;
-	top: 10vw;
+	/*position: absolute;*/
+	/*top: 8vw;*/
 	left: 10%;
 	right: 10%;
 	width: 80%;
@@ -57,7 +60,7 @@ h1 {
 	right: 10%;
 	width: 80%;
 	bottom: 10%;
-	height: 25%;
+	height: 35vh;
 	padding: 0.5em;
 	text-align: center;
 	text-transform: uppercase;
@@ -70,25 +73,13 @@ h1 {
 }
 
 #twisted {
-	position: absolute;
-	top: 50%;
-	left: 10%;
-	right: 10%;
 	width: 80%;
-	/*margin: 0 auto;*/
+	margin: 0.1vw auto;
 	background: rgba(255, 255, 255, 1);
 }
 
-#buttonRow {
-	position: absolute;
-	top: 40%;
-	left: 10%;
-	right: 10%;
-	width: 80%;
-}
-
 #buttonRow button {
-	margin: 0.25em;
+	margin: 0.75em 0.25em;
 }
 
 /*To hide the red focus hightlight box around the input field*/
