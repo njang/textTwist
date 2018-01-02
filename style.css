@@ -19,10 +19,22 @@ content {
 }
 
 h1 {
+	position: absolute;
+	top: 5%;
+	height: 10%;
+	width: 100%;
 	text-transform: uppercase;
 	font-family: 'Monoton', cursive;
 	color: white;
-	font-size: 6vh;
+	font-size: calc(48px + 2vh);
+	margin: 0 auto;
+}
+
+form {
+	position: absolute;
+	top: 18%;
+	height: 15%;
+	width: 100%;
 	margin: 0.5em auto;
 }
 
@@ -35,21 +47,33 @@ h1 {
 } 
 
 #guess {
-	/*position: absolute;*/
-	/*top: 8vw;*/
+	/*position: absolute;
+	top: 35%;*/
+	height: 10%;
 	left: 10%;
 	right: 10%;
 	width: 80%;
 	margin: 0 auto;
 	padding: 1em;
 	border: none;
-	/*border-color: transparent;*/
 	background: rgba(255, 255, 255, 0.8);
+	/*border-color: transparent;*/
 /*	color: transparent;
 	text-shadow: 0 0 0 #000000;
 	&:focus {
       outline: none;
 	}*/
+}
+
+#twisted {
+	position: absolute;
+	top: 34%;
+	height: 5%;
+	left: 10%;
+	right: 10%;
+	width: 80%;
+	margin: 1em auto;
+	background: rgba(255, 255, 255, 1);
 }
 
 #words {
@@ -58,11 +82,10 @@ h1 {
 	left: 10%;
 	right: 10%;
 	width: 80%;
-	top: 33vh;
-	bottom: 0;
-	height: 25vh;
+	bottom: 10%;
+	height: 45%;
 	padding: 1em;
-	/*text-align: center;*/
+	text-align: center;
 	text-transform: uppercase;
 	background: rgba(255, 255, 255, 0.8);
 }
@@ -72,22 +95,16 @@ h1 {
 	background: black;
 }
 
-#twisted {
-	width: 80%;
-	margin: 0.1vw auto;
-	background: rgba(255, 255, 255, 1);
-}
-
 #buttonRow button {
 	margin: 0.75em 0.25em;
 }
 
-@include media-breakpoint-between(md){
+/*@include media-breakpoint-between(md){
   .btn {
       @include button-size($input-btn-padding-y-md, $input-btn-padding-x-md, $font-size-md, $line-height-md, $btn-border-radius-md);
   }
 }
-
+*/
 /*To hide the red focus hightlight box around the input field*/
 input:focus {
   outline-width: 0;
