@@ -22,7 +22,8 @@ h1 {
 	text-transform: uppercase;
 	font-family: 'Monoton', cursive;
 	color: white;
-	font-size: 96px;
+	/*font-size: 96px;*/
+	font-size: 6vw;
 	margin: 0.5em auto;
 }
 
@@ -34,7 +35,8 @@ h1 {
 	left: 10%;
 	right: 10%;
 	width: 80%;
-	font-size: 36px;
+	/*font-size: 36px;*/
+	font-size: 2vw;
 	margin: 0 auto;
 	padding: 20px;
 	border: solid;
@@ -49,7 +51,8 @@ h1 {
 }
 
 #words {
-	font-size: 24px;
+	/*font-size: 24px;*/
+	font-size: 1.5vw;
 	position: absolute;
 	left: 10%;
 	right: 10%;
@@ -70,6 +73,7 @@ h1 {
 
 #twisted {
 	font-size: 60px;
+	font-size: 4vw;
 	position: absolute;
 	top: 50%;
 	left: 10%;
