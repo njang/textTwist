@@ -1,7 +1,6 @@
 body {
 	text-align: center;
 	background: url('https://images.unsplash.com/photo-1461958508236-9a742665a0d5?auto=format&fit=crop&w=1950&q=80');
-	/*background-repeat: no-repeat;*/
 	background-size: cover;
 }
 
@@ -27,31 +26,31 @@ h1 {
 	margin: 0.5em auto;
 }
 
+#guess, #twisted {
+	height: 4vw;
+	border-radius: 2vw;
+	font-size: 1.5vw;
+	padding: 1em;
+	text-transform: uppercase;
+} 
+
 #guess {
 	position: absolute;
-	top: 25%;
-	bottom: 65%;
-	height: 10%;
+	top: 10vw;
 	left: 10%;
 	right: 10%;
 	width: 80%;
-	/*font-size: 36px;*/
-	font-size: 2vw;
 	margin: 0 auto;
-	padding: 20px;
 	border: solid;
-	border-radius: 15px;
-	text-transform: uppercase;
 	background: rgba(255, 255, 255, 0.8);
 	color: transparent;
-  	text-shadow: 0 0 0 #000000;
+	text-shadow: 0 0 0 #000000;
 	&:focus {
       outline: none;
-  	}
+	}
 }
 
 #words {
-	/*font-size: 24px;*/
 	font-size: 1.5vw;
 	position: absolute;
 	left: 10%;
@@ -59,7 +58,6 @@ h1 {
 	width: 80%;
 	bottom: 10%;
 	height: 25%;
-	border-radius: 15px;
 	padding: 0.5em;
 	text-align: center;
 	text-transform: uppercase;
@@ -72,16 +70,12 @@ h1 {
 }
 
 #twisted {
-	font-size: 60px;
-	font-size: 4vw;
 	position: absolute;
 	top: 50%;
 	left: 10%;
 	right: 10%;
 	width: 80%;
-	margin: 0 auto;
-	border-radius: 15px;
-	text-transform: uppercase;
+	/*margin: 0 auto;*/
 	background: rgba(255, 255, 255, 1);
 }
 
@@ -94,5 +88,23 @@ h1 {
 }
 
 #buttonRow button {
-	margin: 0 0.25em;
+	margin: 0.25em;
+}
+
+/*To hide the red focus hightlight box around the input field*/
+input:focus {
+  outline-width: 0;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  text-align: center;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  text-align: center;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  text-align: center;
+}
+:-moz-placeholder { /* Firefox 18- */
+  text-align: center;
 }
