@@ -1,13 +1,11 @@
 
 // Load the list of words from a separate words.json file.
-// Filter out words hat are too short or too long.
+// Filter out words that are too short or too long.
 let collection = [];
-// let commonList = [];
 $(document).ready(function() {
 	let minLength = 3;	// minimum string length of word
 	let maxLength = 6;	// maximum string length of word
 	collection = dictionary.words.filter(word => (word.length <= maxLength && word.length >= minLength));
-	// commonList = common.words.filter(word => (word.length <= maxLength && word.length >= minLength));
   // $.getJSON("words.json", (result) => {
   //   collection = result.words.filter(word => (word.length <= maxLength && word.length >= minLength));
   // });
@@ -29,7 +27,7 @@ const buildPermutations = () => {
 	permutations = Array.from(new Set(getAllPermutations(randomWord)));
 	wordList = permutations.filter(word => collection.indexOf(word) >= 0);
 	wordList.sort((a, b) => {
-		return a.length - b.length;
+		return a.length - b.length || a.localeCompare(b);
 	});
 };
 
@@ -111,7 +109,7 @@ $('#submit').click((event) => {
 	let guessWord = $("#guess").val();
 	if (wordList.indexOf(guessWord) >= 0 && correctGuesses.indexOf(guessWord) < 0) {
 		correctGuesses.push(guessWord);
-		correctGuesses.sort(function(a, b){return a.length - b.length || a.localeCompare(b)});
+		correctGuesses.sort((a, b) => {return a.length - b.length || a.localeCompare(b)});
 		$('#words').text(correctGuesses.join(', '));
 		
 		// If the player guesses the correct word, display congratulation message.
