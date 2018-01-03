@@ -18,6 +18,23 @@ content {
 	border-radius: 20px;
 }
 
+@media (max-width: 1080px) {
+  body {
+  	/*background: none;*/
+  }
+  content {
+  	top: 0;
+  	bottom: 0;
+  	height: 100%;
+  	left: 0;
+  	right: 0;
+  	width: 100%;
+  	border: none;
+  	border-radius: 0;
+  }
+}
+
+
 h1 {
 	position: absolute;
 	top: 5%;
