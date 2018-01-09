@@ -1,5 +1,7 @@
 # Text Twist
 
+Follow this [link](https://njang.github.io/textTwist/) to play the game.
+
 ## Description
 Text twist is a word game, where the player guesses the right word by correcting the order of letters that are mixed up. For example, a word "GATHER" is presented to the player by "RTEAGH". The player can guess other shorter words made up of the letters A, E, G, H, R, and T, such as "GET", "HEAR" or "HEART". Each round is complete when the player correctly guesses all permutations of the letters that are words. 
 
